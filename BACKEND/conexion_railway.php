@@ -12,14 +12,14 @@ $mysqlUrl = getenv('MYSQL_URL') ?: getenv('DATABASE_URL');
 if ($mysqlUrl) {
     $parts = parse_url($mysqlUrl);
 
-    $host = $parts['host'] ?? 'localhost';
+    $host = $parts['host'] ?? 'mysql.railway.internal';
     $user = $parts['user'] ?? 'root';
     $pass = $parts['pass'] ?? '';
     $db   = isset($parts['path']) ? ltrim($parts['path'], '/') : 'railway';
     $port = (int)($parts['port'] ?? 3306);
 } else {
     // 2) Variables sueltas
-    $host = getenv('MYSQLHOST') ?: 'localhost';
+    $host = getenv('MYSQLHOST') ?: 'mysql.railway.internal';
     $user = getenv('MYSQLUSER') ?: 'root';
     $pass = getenv('MYSQLPASSWORD') ?: '';
     $db   = getenv('MYSQLDATABASE') ?: 'railway';

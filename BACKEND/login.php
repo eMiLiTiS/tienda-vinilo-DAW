@@ -1,4 +1,8 @@
 <?php
+
+error_log("ENV MYSQLHOST=" . var_export(getenv('MYSQLHOST'), true));
+error_log("ENV MYSQLUSER=" . var_export(getenv('MYSQLUSER'), true));
+
 // Configurar la sesión ANTES de session_start()
 ini_set('session.cookie_samesite', 'None');
 ini_set('session.cookie_secure', '1'); // Solo HTTPS
