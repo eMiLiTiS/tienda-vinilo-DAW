@@ -2,6 +2,9 @@
 /**
  * CONEXIÓN A BASE DE DATOS - RAILWAY
  */
+error_log("MYSQLHOST=" . getenv('MYSQLHOST'));
+error_log("MYSQLUSER=" . getenv('MYSQLUSER'));
+
 
 // 1) Intentar URL única (Railway a veces expone MYSQL_URL o DATABASE_URL)
 $mysqlUrl = getenv('MYSQL_URL') ?: getenv('DATABASE_URL');
