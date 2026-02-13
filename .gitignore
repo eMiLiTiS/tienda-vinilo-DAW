@@ -1,5 +1,5 @@
-# Archivos de configuración local
-BACKEND/conexion.php
+# Archivos de configuración local (solo local, NO se suben)
+BACKEND/conexion_local.php
 
 # Uploads (imágenes de vinilos - las subiremos manualmente a Railway)
 BACKEND/uploads/*
@@ -21,12 +21,3 @@ desktop.ini
 
 # Base de datos locales
 *.sql.backup
-```
-
----
-
-### **1.2 Crear archivo `.gitkeep` en uploads**
-
-Para mantener la carpeta `uploads` en Git (pero vacía):
-```
-C:\xampp\htdocs\tienda iker\BACKEND\uploads\.gitkeep

@@ -61,8 +61,11 @@ function estaAutenticado() {
 
 function requiereAutenticacion() {
     if (!estaAutenticado()) {
-        header("Location: https://tienda_vinilo_DAW.vercel.app/login.html");
+        http_response_code(401);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['success' => false, 'message' => 'No autenticado']);
         exit;
     }
 }
+
 ?>
