@@ -1,0 +1,32 @@
+# Archivos de configuración local
+BACKEND/conexion.php
+
+# Uploads (imágenes de vinilos - las subiremos manualmente a Railway)
+BACKEND/uploads/*
+!BACKEND/uploads/.gitkeep
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Base de datos locales
+*.sql.backup
+```
+
+---
+
+### **1.2 Crear archivo `.gitkeep` en uploads**
+
+Para mantener la carpeta `uploads` en Git (pero vacía):
+```
+C:\xampp\htdocs\tienda iker\BACKEND\uploads\.gitkeep
