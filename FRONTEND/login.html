@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Vinyl Lab</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --fondo: #f4e8d2;
+            --boton: #5b3c20;
+            --texto: #2d1b0d;
+        }
+
+        body {
+            background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/wood_pattern.png');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-logo {
+            max-width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .login-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--boton);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border: 2px solid var(--boton);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .form-control:focus {
+            border-color: var(--boton);
+            box-shadow: 0 0 0 0.2rem rgba(91, 60, 32, 0.25);
+        }
+
+        .btn-login {
+            background-color: var(--boton);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-login:hover {
+            background-color: #3d2714;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert {
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            color: var(--boton);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .back-link:hover {
+            color: #3d2714;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container text-center">
+        <img src="imagenes/VinylLab.png" alt="Vinyl Lab Logo" class="login-logo">
+        <h1 class="login-title">Iniciar Sesión</h1>
+        
+        <div id="mensajeAlerta"></div>
+        
+        <form id="formLogin">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required>
+            </div>
+            
+            <div class="mb-3">
+                <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+            </div>
+            
+            <button type="submit" class="btn-login" id="btnSubmit">
+                Iniciar Sesión
+            </button>
+        </form>
+        
+        <a href="../BACKEND/index.php" class="back-link">← Volver al inicio</a>
+    </div>
+
+    <script>
+        const formLogin = document.getElementById('formLogin');
+        const mensajeAlerta = document.getElementById('mensajeAlerta');
+        const btnSubmit = document.getElementById('btnSubmit');
+
+        formLogin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = 'Procesando...';
+            
+            const usuario = document.getElementById('usuario').value;
+            const contrasena = document.getElementById('contrasena').value;
+            
+            try {
+                // ✅ CORREGIDO: Ruta relativa
+                const response = await fetch('../BACKEND/login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        usuario: usuario,
+                        contrasena: contrasena
+                    })
+                });
+                
+                const data = await response.json();
+                
+                console.log('Respuesta del servidor:', data);
+                
+                if (data.success) {
+                    mensajeAlerta.innerHTML = `
+                        <div class="alert alert-success" role="alert">
+                            ¡Login exitoso! Redirigiendo...
+                        </div>
+                    `;
+                    
+                    setTimeout(() => {
+                        window.location.href = '../BACKEND/index.php';
+                    }, 1500);
+                } else {
+                    mensajeAlerta.innerHTML = `
+                        <div class="alert alert-danger" role="alert">
+                            ${data.message || 'Error al iniciar sesión'}
+                        </div>
+                    `;
+                    
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = 'Iniciar Sesión';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                mensajeAlerta.innerHTML = `
+                    <div class="alert alert-danger" role="alert">
+                        Error de conexión. Por favor, intenta nuevamente.
+                    </div>
+                `;
+                
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = 'Iniciar Sesión';
+            }
+        });
+    </script>
+</body>
+</html>
