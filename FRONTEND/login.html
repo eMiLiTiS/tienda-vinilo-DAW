@@ -137,7 +137,8 @@
             
             try {
                 // ✅ CORREGIDO: Ruta relativa
-                const response = await fetch('../BACKEND/login.php', {
+                const API_BASE = "https://tienda-vinilo-daw-production.up.railway.app";
+                const response = await fetch(API_BASE + '/login.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

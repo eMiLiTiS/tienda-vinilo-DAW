@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Incluir archivo de conexión
-require_once 'conexion.php';
+require_once __DIR__ . '/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener datos del POST
