@@ -1,27 +1,39 @@
 <?php
 /**
  * CONEXIÓN A BASE DE DATOS - RAILWAY
- * Este archivo usa variables de entorno de Railway
  */
 
-// ✅ Obtener credenciales de variables de entorno (Railway)
-$host = getenv('MYSQLHOST') ?: 'localhost';
-$user = getenv('MYSQLUSER') ?: 'root';
-$pass = getenv('MYSQLPASSWORD') ?: '';
-$db   = getenv('MYSQLDATABASE') ?: 'railway';
-$port = (int)(getenv('MYSQLPORT') ?: 3306);
+// 1) Intentar URL única (Railway a veces expone MYSQL_URL o DATABASE_URL)
+$mysqlUrl = getenv('MYSQL_URL') ?: getenv('DATABASE_URL');
 
-// ✅ Crear conexión
+if ($mysqlUrl) {
+    $parts = parse_url($mysqlUrl);
+
+    $host = $parts['host'] ?? 'localhost';
+    $user = $parts['user'] ?? 'root';
+    $pass = $parts['pass'] ?? '';
+    $db   = isset($parts['path']) ? ltrim($parts['path'], '/') : 'railway';
+    $port = (int)($parts['port'] ?? 3306);
+} else {
+    // 2) Variables sueltas
+    $host = getenv('MYSQLHOST') ?: 'localhost';
+    $user = getenv('MYSQLUSER') ?: 'root';
+    $pass = getenv('MYSQLPASSWORD') ?: '';
+    $db   = getenv('MYSQLDATABASE') ?: 'railway';
+    $port = (int)(getenv('MYSQLPORT') ?: 3306);
+}
+
+// Crear conexión
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
-// ✅ Verificar conexión
+// Verificar conexión
 if ($conn->connect_error) {
     error_log("Error de conexión MySQL: " . $conn->connect_error);
     die("Error de conexión a la base de datos.");
 }
 
-// ✅ Configurar charset
 $conn->set_charset("utf8mb4");
+
 
 // ✅ Funciones helper (las mismas que tienes en conexion.php local)
 function ejecutarConsulta($sql) {
