@@ -1,8 +1,5 @@
 <?php
 
-error_log("ENV MYSQLHOST=" . var_export(getenv('MYSQLHOST'), true));
-error_log("ENV MYSQLUSER=" . var_export(getenv('MYSQLUSER'), true));
-
 // Configurar la sesión ANTES de session_start()
 ini_set('session.cookie_samesite', 'None');
 ini_set('session.cookie_secure', '1'); // Solo HTTPS
@@ -69,15 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verificar contraseña
             // Primero intentamos con password_verify (para contraseñas hasheadas)
             // Si falla, comparamos directamente (para contraseñas en texto plano)
-            $password_valida = false;
-            
-            if (password_verify($contrasena, $row['pass'])) {
-                // Contraseña hasheada correcta
-                $password_valida = true;
-            } elseif ($contrasena === $row['pass']) {
-                // Contraseña en texto plano (TEMPORAL - deberías hashear las contraseñas)
-                $password_valida = true;
-            }
+            $password_valida = hash_equals($row['pass'], $contrasena);
             
             if ($password_valida) {
                 // Regenerar ID de sesión por seguridad
