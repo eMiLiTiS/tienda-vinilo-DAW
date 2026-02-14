@@ -31,8 +31,11 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catálogo — Vinyl Lab</title>
-  <link rel="icon" href="https://tienda-vinilo-daw.vercel.app/favicon.ico">
-  <link rel="shortcut icon" href="https://tienda-vinilo-daw.vercel.app/favicon.ico">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<text y='0.9em' font-size='400'>💿</text>
+</svg>">
 
 
   <!-- Google Fonts -->
