@@ -121,6 +121,10 @@ if (!move_uploaded_file($archivo['tmp_name'], $destination)) {
     </script>");
 }
 
+error_log("DEBUG saved upload to=" . $destination);
+error_log("DEBUG saved routeDB=" . $rutaDB);
+
+
 // ✅ Insertar en BD con prepared statement (SEGURO)
 $stmt = $conn->prepare("
     INSERT INTO vinilos (nombre, artista, descripcion, precio, anio, imagen, visible)

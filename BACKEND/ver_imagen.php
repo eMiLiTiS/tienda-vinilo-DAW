@@ -6,6 +6,12 @@ $f = basename($f); // seguridad básica
 $base = __DIR__ . '/../uploads/';
 $path = $base . $f;
 
+error_log("DEBUG uploads base=" . $base);
+error_log("DEBUG requested f=" . $f);
+error_log("DEBUG full path=" . $path);
+error_log("DEBUG exists=" . (is_file($path) ? 'yes' : 'no'));
+
+
 if (!is_file($path)) {
     http_response_code(404);
     exit('Not found');
