@@ -6,7 +6,6 @@ if (getenv('RAILWAY_ENVIRONMENT')) {
 } else {
   require_once __DIR__ . '/conexion.php';
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +104,6 @@ if (getenv('RAILWAY_ENVIRONMENT')) {
           </tbody>
         </table>
       </div>
-
     </div>
   </main>
 
@@ -138,7 +136,5 @@ if (getenv('RAILWAY_ENVIRONMENT')) {
       buscarVinilos(input.value);
     });
   </script>
-
 </body>
-
 </html>

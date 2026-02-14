@@ -1,10 +1,11 @@
 <?php
 session_start();
-// Usar conexión de Railway en producción, local en desarrollo
+
+// Conexión
 if (getenv('RAILWAY_ENVIRONMENT')) {
-    require_once __DIR__ . '/conexion_railway.php';
+  require_once __DIR__ . '/conexion_railway.php';
 } else {
-    require_once __DIR__ . '/conexion.php';
+  require_once __DIR__ . '/conexion.php';
 }
 
 $buscar = $_GET['buscar'] ?? '';
@@ -24,49 +25,46 @@ if ($result->num_rows === 0) {
           </td>
         </tr>';
 } else {
-  while ($v = $result->fetch_assoc()):
-?>
-    <tr>
-      <td>
-        <img src="<?= htmlspecialchars($v['imagen']) ?>"
-          style="width:70px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);"
-          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3Ctext fill=%22%23999%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3ESin imagen%3C/text%3E%3C/svg%3E'">
-      </td>
+  while ($v = $result->fetch_assoc()) {
+    echo '<tr>';
 
-      <td style="font-weight:600;">
-        <?= htmlspecialchars($v['nombre']) ?>
-      </td>
+    // IMAGEN (usando ver_imagen.php)
+    echo '<td>
+            <img src="ver_imagen.php?f=' . urlencode(basename($v['imagen'])) . '"
+                 alt="Portada"
+                 style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
+          </td>';
 
-      <td>
-        <?= number_format($v['precio'], 2, ',', '.') ?> €
-      </td>
+    // NOMBRE
+    echo '<td style="font-weight:600;">' . htmlspecialchars($v['nombre']) . '</td>';
 
-      <td>
-        <span class="badge <?= $v['visible'] ? 'bg-success' : 'bg-secondary' ?>">
-          <?= $v['visible'] ? 'Visible' : 'Oculto' ?>
-        </span>
-      </td>
+    // PRECIO
+    echo '<td>' . number_format((float)$v['precio'], 2, ',', '.') . ' €</td>';
 
-      <td class="d-flex gap-2 justify-content-center">
-        <!-- ✅ CORREGIDO: Ruta relativa -->
-        <a href="toggle_vinilo.php?id=<?= $v['id'] ?>"
-          class="btn btn-sm"
-          style="background-color:#c48a3a;color:white;">
-          <?= $v['visible'] ? 'Ocultar' : 'Mostrar' ?>
-        </a>
+    // VISIBLE
+    $badgeClass = $v['visible'] ? 'bg-success' : 'bg-secondary';
+    $badgeText  = $v['visible'] ? 'Visible' : 'Oculto';
+    echo '<td><span class="badge ' . $badgeClass . '">' . $badgeText . '</span></td>';
 
-        <!-- ✅ CORREGIDO: Ruta relativa -->
-        <a href="eliminar_vinilo.php?id=<?= $v['id'] ?>"
-          class="btn btn-danger btn-sm"
-          onclick="return confirm('¿Eliminar este vinilo?')">
-          Eliminar
-        </a>
-      </td>
-    </tr>
-<?php
-  endwhile;
+    // ACCIONES
+    $toggleText = $v['visible'] ? 'Ocultar' : 'Mostrar';
+    echo '<td class="d-flex gap-2 justify-content-center">
+            <a href="toggle_vinilo.php?id=' . (int)$v['id'] . '"
+               class="btn btn-sm"
+               style="background-color:#c48a3a;color:white;">
+              ' . $toggleText . '
+            </a>
+
+            <a href="eliminar_vinilo.php?id=' . (int)$v['id'] . '"
+               class="btn btn-danger btn-sm"
+               onclick="return confirm(\'¿Eliminar este vinilo?\')">
+              Eliminar
+            </a>
+          </td>';
+
+    echo '</tr>';
+  }
 }
 
 $stmt->close();
 $conn->close();
-?>
