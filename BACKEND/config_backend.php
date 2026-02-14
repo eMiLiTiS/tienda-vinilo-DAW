@@ -65,7 +65,7 @@ if (ES_PRODUCCION) {
 define('APP_NAME', 'Vinyl Lab');
 define('APP_TAGLINE', 'El sonido del pasado, con la calidez del presente');
 
-define('SESSION_NAME', 'vinyl_lab_session');
+define('SESSION_NAME', 'tienda-vinilo_session');
 define('SESSION_LIFETIME', 7200); // 2 horas
 
 define('MAX_FILE_SIZE', 5 * 1024 * 1024); // 5 MB
