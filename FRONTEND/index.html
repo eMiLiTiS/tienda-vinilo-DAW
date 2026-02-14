@@ -99,12 +99,12 @@
       <!-- Botones de usuario -->
       <div class="d-flex align-items-center gap-2">
         <!-- Botón Gestionar catálogo (solo con sesión) -->
-        <a href="https://vinyllabs-production.up.railway.app/gestionar_catalogo.php" 
+        <a href="https://tienda-vinilo-daw-production.up.railway.app/gestionar_catalogo.php" 
            class="btn-login-custom sesion-required" 
            id="btnGestionarHeader">Gestionar catálogo</a>
         
         <!-- Botón Cerrar sesión (solo con sesión) -->
-        <a href="https://vinyllabs-production.up.railway.app/logout.php" 
+        <a href="https://tienda-vinilo-daw-production.up.railway.app/logout.php" 
            class="btn-login-custom sesion-required" 
            id="btnCerrarSesion">Cerrar sesión</a>
         
@@ -131,19 +131,19 @@
     </div>
     <div class="offcanvas-body">
       <nav class="nav flex-column">
-        <a class="nav-link" href="https://vinyl-labs.vercel.app">Inicio</a>
-        <a class="nav-link" href="https://vinyllabs-production.up.railway.app/catalogo.php">Catálogo</a>
+        <a class="nav-link" href="https://tienda-vinilo-daw-production.up.railway.app">Inicio</a>
+        <a class="nav-link" href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Catálogo</a>
         <a class="nav-link" href="#">Ofertas</a>
         <a class="nav-link" href="#">Contacto</a>
         
         <!-- Botón Gestionar catálogo en menú (solo con sesión) -->
         <a class="nav-link sesion-required" 
-           href="https://vinyllabs-production.up.railway.app/gestionar_catalogo.php" 
+           href="https://tienda-vinilo-daw-production.up.railway.app/gestionar_catalogo.php" 
            id="btnGestionarMenu">Gestionar catálogo</a>
         
         <!-- Botón Cerrar sesión en menú (solo con sesión) -->
         <a class="nav-link sesion-required" 
-           href="https://vinyllabs-production.up.railway.app/logout.php" 
+           href="https://tienda-vinilo-daw-production.up.railway.app/logout.php" 
            id="btnCerrarSesionMenu">Cerrar sesión</a>
         
         <!-- Botón Iniciar sesión en menú (solo sin sesión) -->
@@ -158,7 +158,7 @@
   <section class="splash-full">
     <h1 class="titulo-splash">Vinyl Lab</h1>
     <p class="subtitulo-splash">"El sonido del pasado, con la calidez del presente"</p>
-    <a href="https://vinyllabs-production.up.railway.app/catalogo.php" class="btn-catalogo">Ver Catálogo</a>
+    <a href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php" class="btn-catalogo">Ver Catálogo</a>
   </section>
 
   <!-- CONTENIDO PRINCIPAL -->
@@ -258,7 +258,7 @@
           <h5 class="footer-titulo">Enlaces</h5>
           <ul class="list-unstyled footer-links">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="https://vinyllabs-production.up.railway.app/catalogo.php">Catálogo</a></li>
+            <li><a href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Catálogo</a></li>
             <li><a href="#">Ofertas</a></li>
             <li><a href="#">Contacto</a></li>
           </ul>
@@ -326,7 +326,7 @@
     // Verificar si hay sesión activa
     async function verificarSesion() {
       try {
-        const response = await fetch('https://vinyllabs-production.up.railway.app/verificar_sesion.php', {
+        const response = await fetch('https://tienda-vinilo-daw-production.up.railway.app/verificar_sesion.php', {
           method: 'GET',
           credentials: 'include' // Importante para enviar cookies de sesión
         });

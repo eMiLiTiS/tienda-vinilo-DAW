@@ -118,7 +118,8 @@
 
       <div class="d-flex align-items-center gap-2">
         <!-- ✅ CORREGIDO: Rutas relativas -->
-        <a href="../BACKEND/catalogo.php" class="btn-login-custom">Catálogo</a>
+        <a href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Catálogo</a>
+
         <a href="../BACKEND/index.php" class="btn-login-custom">Inicio</a>
 
         <button class="btn btn-hamburguesa" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"
@@ -137,7 +138,8 @@
       <nav class="nav flex-column">
         <!-- ✅ CORREGIDO: Rutas relativas -->
         <a class="nav-link" href="../BACKEND/index.php">Inicio</a>
-        <a class="nav-link" href="../BACKEND/catalogo.php">Catálogo</a>
+        <a href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Catálogo</a>
+
       </nav>
     </div>
   </div>
@@ -161,7 +163,7 @@
         <i class="bi bi-exclamation-circle me-2"></i>
         No se ha seleccionado ningún vinilo.
         <!-- ✅ CORREGIDO: Ruta relativa -->
-        <a href="../BACKEND/catalogo.php">Vuelve al catálogo</a>
+        <a href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Vuelve al catálogo</a>
         y pulsa "Dejar reseña" en el vinilo que quieras.
       </div>
 
@@ -194,7 +196,7 @@
 
         <div class="text-center mt-3">
           <!-- ✅ CORREGIDO: Ruta relativa -->
-          <a class="btn-login-custom" href="../BACKEND/catalogo.php">
+          <a class="btn-login-custom" href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">
             ← Volver al catálogo
           </a>
         </div>
@@ -272,7 +274,7 @@
 
         if (resp.ok || resp.redirected) {
           // ✅ CORREGIDO: Ruta relativa
-          window.location.href = "../BACKEND/catalogo.php?resena=ok";
+          window.location.href = "https://tienda-vinilo-daw-production.up.railway.app/BACKEND/catalogo.php?resena=ok";
         } else {
           throw new Error("Error de servidor: " + resp.status);
         }
