@@ -269,15 +269,21 @@
         // ✅ CORREGIDO: Ruta relativa
         const resp = await fetch("https://tienda-vinilo-daw-production.up.railway.app/guardar_resena.php", {
           method: "POST",
+          headers: {
+            "Accept": "application/json"
+          },
           body: data,
         });
 
-        if (resp.ok || resp.redirected) {
-          // ✅ CORREGIDO: Ruta relativa
+        const result = await resp.json().catch(() => null);
+
+        if (resp.ok && result && result.success) {
           window.location.href = "https://tienda-vinilo-daw-production.up.railway.app/catalogo.php?resena=ok";
         } else {
-          throw new Error("Error de servidor: " + resp.status);
+          const msg = (result && result.message) ? result.message : `Error de servidor: ${resp.status}`;
+          throw new Error(msg);
         }
+
       } catch (err) {
         btnEnviar.disabled = false;
         showAlert('error', '<i class="bi bi-exclamation-triangle-fill me-2"></i>Ha ocurrido un error al enviar la reseña. Inténtalo de nuevo.');
