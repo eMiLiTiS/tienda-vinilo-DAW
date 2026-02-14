@@ -53,25 +53,33 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 require_once __DIR__ . '/conexion.php';
 
 // ---------- Leer datos (FormData o JSON) ----------
-$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
-$inputJson = null;
+$vinilo_id = 0;
+$nombre = '';
+$ciudad = '';
+$comentario = '';
+$valoracion = null;
 
-if (stripos($contentType, 'application/json') !== false) {
-    $inputJson = json_decode(file_get_contents('php://input'), true);
-    if (!is_array($inputJson)) $inputJson = [];
-    $vinilo_id  = (int)($inputJson['vinilo_id'] ?? 0);
-    $nombre     = trim((string)($inputJson['nombre'] ?? ''));
-    $ciudad     = trim((string)($inputJson['ciudad'] ?? ''));
-    $comentario = trim((string)($inputJson['comentario'] ?? ''));
-    $valoracion = isset($inputJson['valoracion']) ? (int)$inputJson['valoracion'] : null;
-} else {
-    // FormData (multipart/form-data o application/x-www-form-urlencoded)
+// 1) Primero intenta FormData (porque tu formulario envía FormData)
+if (!empty($_POST)) {
     $vinilo_id  = isset($_POST['vinilo_id']) ? (int)$_POST['vinilo_id'] : 0;
     $nombre     = trim($_POST['nombre'] ?? '');
     $ciudad     = trim($_POST['ciudad'] ?? '');
     $comentario = trim($_POST['comentario'] ?? '');
     $valoracion = isset($_POST['valoracion']) ? (int)$_POST['valoracion'] : null;
+} else {
+    // 2) Si no hay POST, intenta JSON SIEMPRE (robusto)
+    $raw = file_get_contents('php://input');
+    $inputJson = json_decode($raw, true);
+
+    if (is_array($inputJson)) {
+        $vinilo_id  = (int)($inputJson['vinilo_id'] ?? 0);
+        $nombre     = trim((string)($inputJson['nombre'] ?? ''));
+        $ciudad     = trim((string)($inputJson['ciudad'] ?? ''));
+        $comentario = trim((string)($inputJson['comentario'] ?? ''));
+        $valoracion = isset($inputJson['valoracion']) ? (int)$inputJson['valoracion'] : null;
+    }
 }
+
 
 // ---------- Validaciones ----------
 if ($vinilo_id <= 0 || $nombre === '' || $ciudad === '' || $comentario === '') {
