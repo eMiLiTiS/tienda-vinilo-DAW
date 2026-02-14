@@ -8,6 +8,11 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vinyl Lab</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+<text y='0.9em' font-size='400'>💿</text>
+</svg>">
 
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -114,7 +119,7 @@ session_start();
           <a class="nav-link" href="gestionar_catalogo.php">Gestionar vinilos</a>
           <a class="nav-link" href="gestionar_resenas.php">Gestionar reseñas</a>
           <a class="nav-link" href="logout.php">Cerrar sesión</a>
-          
+
         <?php else: ?>
           <a class="nav-link" href="https://tienda-vinilo-daw.vercel.app/login.html">Iniciar sesión</a>
         <?php endif; ?>
