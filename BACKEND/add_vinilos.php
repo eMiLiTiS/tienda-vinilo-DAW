@@ -24,7 +24,7 @@ session_start();
     <div class="container d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <!-- ✅ CORREGIDO -->
-        <img src="../FRONTEND/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="header-logo me-2">
+        <img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="header-logo me-2">
         <h1 class="header-title">Vinyl Lab</h1>
       </div>
 
@@ -47,7 +47,7 @@ session_start();
   <div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="menuLateral">
     <div class="offcanvas-header flex-column align-items-start w-100">
       <!-- ✅ CORREGIDO -->
-      <img src="../FRONTEND/imagenes/VinylLab.png" class="sidebar-logo">
+      <img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" class="sidebar-logo">
     </div>
     <div class="offcanvas-body">
       <nav class="nav flex-column">
@@ -106,7 +106,6 @@ session_start();
             Guardar vinilo
           </button>
         </div>
-
       </form>
     </div>
   </main>
