@@ -1,30 +1,21 @@
 -- ============================================
--- VINYL LAB - Base de Datos Limpia
--- Versión: 2.1
--- Base de datos: login_vinyl (nombre original)
+-- VINYL LAB - Base de Datos (Railway)
+-- Versión: 2.2
+-- Base activa: railway
 -- ============================================
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+SET NAMES utf8mb4;
 
---
--- Base de datos: `login_vinyl`
---
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
+-- ============================================
+-- TABLA: usuarios
+-- ============================================
 
 DROP TABLE IF EXISTS `usuarios`;
+
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
@@ -36,26 +27,17 @@ CREATE TABLE `usuarios` (
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `usuarios`
--- ⚠️ Los hashes son placeholders - reemplázalos después de generarlos
---
-
-TRUNCATE TABLE usuarios;
-
-INSERT INTO usuarios (id, nombre, pass, email, creado_en) VALUES
+INSERT INTO `usuarios` (`id`, `nombre`, `pass`, `email`, `creado_en`) VALUES
 (1, 'iker', '123', 'iker@vinyllab.com', NOW()),
 (2, 'admin', 'admin123', 'admin@vinyllab.com', NOW()),
 (3, 'emilio', 'emilio123', 'usuario1@vinyllab.com', NOW());
 
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `vinilos`
---
+-- ============================================
+-- TABLA: vinilos
+-- ============================================
 
 DROP TABLE IF EXISTS `vinilos`;
+
 CREATE TABLE `vinilos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(200) NOT NULL,
@@ -72,24 +54,20 @@ CREATE TABLE `vinilos` (
   KEY `idx_anio` (`anio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `vinilos`
---
+INSERT INTO `vinilos`
+(`nombre`, `artista`, `descripcion`, `precio`, `anio`, `imagen`, `visible`) VALUES
+('Thriller', 'Michael Jackson', 'El álbum más vendido de todos los tiempos. Una obra maestra del pop producida por Quincy Jones.', 29.99, 1982, 'uploads/vinilo_thriller.jpg', 1),
+('Forever', 'Puff Daddy', 'Álbum clave de la era Bad Boy.', 69.99, 1999, 'uploads/vinilo_forever.jpg', 1),
+('Abbey Road', 'The Beatles', 'Uno de los álbumes más icónicos de The Beatles.', 224.99, 1969, 'uploads/vinilo_abbey_road.jpg', 1),
+('The Dark Side of the Moon', 'Pink Floyd', 'Obra maestra del rock progresivo.', 149.99, 1973, 'uploads/vinilo_dark_side.jpg', 1),
+('Hot Space', 'Queen', 'Álbum experimental con elementos de funk y disco.', 89.99, 1982, 'uploads/vinilo_hot_space.jpg', 1);
 
-INSERT INTO `vinilos` (`nombre`, `artista`, `descripcion`, `precio`, `anio`, `imagen`, `visible`) VALUES
-('Thriller', 'Michael Jackson', 'El álbum más vendido de todos los tiempos. Una obra maestra del pop producida por Quincy Jones, con clásicos como "Billie Jean", "Beat It" y "Thriller".', 29.99, 1982, 'uploads/vinilo_thriller.jpg', 1),
-('Forever', 'Puff Daddy', 'Álbum clave de la era Bad Boy, consolidando la posición de Diddy como productor y magnate.', 69.99, 1999, 'uploads/vinilo_forever.jpg', 1),
-('Abbey Road', 'The Beatles', 'Uno de los álbumes más icónicos de The Beatles, con canciones legendarias como "Come Together" y "Here Comes the Sun".', 224.99, 1969, 'uploads/vinilo_abbey_road.jpg', 1),
-('The Dark Side of the Moon', 'Pink Floyd', 'Obra maestra del rock progresivo, conocida por su innovación sonora y sus temas introspectivos.', 149.99, 1973, 'uploads/vinilo_dark_side.jpg', 1),
-('Hot Space', 'Queen', 'Álbum experimental de Queen que incorpora elementos de funk, disco y R&B.', 89.99, 1982, 'uploads/vinilo_hot_space.jpg', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `resenas`
---
+-- ============================================
+-- TABLA: resenas
+-- ============================================
 
 DROP TABLE IF EXISTS `resenas`;
+
 CREATE TABLE `resenas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `vinilo_id` int(11) NOT NULL,
@@ -100,11 +78,9 @@ CREATE TABLE `resenas` (
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `vinilo_id` (`vinilo_id`),
-  CONSTRAINT `resenas_ibfk_1` FOREIGN KEY (`vinilo_id`) REFERENCES `vinilos` (`id`) ON DELETE CASCADE
+  CONSTRAINT `resenas_ibfk_1`
+    FOREIGN KEY (`vinilo_id`) REFERENCES `vinilos` (`id`)
+    ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
