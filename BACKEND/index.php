@@ -87,7 +87,7 @@ session_start();
           <a href="gestionar_resenas.php" class="btn-login-custom">Gestionar reseñas</a>
           <a href="logout.php" class="btn-login-custom">Cerrar sesión</a>
         <?php else: ?>
-          <a href="../FRONTEND/login.html" class="btn-login-custom">Iniciar sesión</a>
+          <a href="https://tienda-vinilo-daw.vercel.app/login.html" class="btn-login-custom">Iniciar sesión</a>
         <?php endif; ?>
 
         <button class="btn btn-hamburguesa" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"
@@ -116,7 +116,7 @@ session_start();
           <a class="nav-link" href="logout.php">Cerrar sesión</a>
           
         <?php else: ?>
-          <a class="nav-link" href="../FRONTEND/login.html">Iniciar sesión</a>
+          <a class="nav-link" href="https://tienda-vinilo-daw.vercel.app/login.html">Iniciar sesión</a>
         <?php endif; ?>
       </nav>
     </div>
