@@ -317,7 +317,7 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
           <a href="gestionar_resenas.php" class="btn-login-custom">Gestionar reseñas</a>
         <?php endif; ?>
 
-        <a href="https://vinyl-labs.vercel.app" class="btn-login-custom">Inicio</a>
+        <a href="https://tienda-vinilo-daw.vercel.app" class="btn-login-custom">Inicio</a>
 
         <button class="btn btn-hamburguesa" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"
           aria-controls="menuLateral" aria-label="Abrir menú" id="btnHamburguesa">
@@ -336,8 +336,8 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
     </div>
     <div class="offcanvas-body">
       <nav class="nav flex-column">
-        <a class="nav-link" href="https://vinyl-labs.vercel.app">Inicio</a>
-        <a class="nav-link" href="https://vinyllabs-production.up.railway.app/catalogo.php">Catálogo</a>
+        <a class="nav-link" href="https://tienda-vinilo-daw.vercel.app">Inicio</a>
+        <a class="nav-link" href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Catálogo</a>
         <a class="nav-link" href="#">Ofertas</a>
         <a class="nav-link" href="#">Contacto</a>
 
@@ -453,8 +453,8 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
         <div class="col-md-3 text-center text-md-start">
           <h5 class="footer-titulo">Enlaces</h5>
           <ul class="list-unstyled footer-links">
-            <li><a href="https://vinyl-labs.vercel.app">Inicio</a></li>
-            <li><a href="https://vinyllabs-production.up.railway.app/catalogo.php">Catálogo</a></li>
+            <li><a href="https://tienda-vinilo-daw.vercel.app">Inicio</a></li>
+            <li><a href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Catálogo</a></li>
             <li><a href="#">Ofertas</a></li>
             <li><a href="#">Contacto</a></li>
           </ul>

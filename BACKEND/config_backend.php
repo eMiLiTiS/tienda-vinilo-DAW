@@ -27,8 +27,8 @@ define('HOST', $_SERVER['HTTP_HOST']);
 // Si tu proyecto está en C:\xampp\htdocs\vinilos\
 define('ROOT_PATH', '/vinilos/');
 
-// Si tu proyecto está en C:\xampp\htdocs\vinyl-lab\
-// define('ROOT_PATH', '/vinyl-lab/');
+// Si tu proyecto está en C:\xampp\htdocs\tienda-vinilo-daw\
+// define('ROOT_PATH', '/tienda-vinilo-daw/');
 
 define('BASE_URL', PROTOCOLO . HOST . ROOT_PATH);
 

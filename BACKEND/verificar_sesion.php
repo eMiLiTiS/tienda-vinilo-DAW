@@ -3,7 +3,7 @@ session_start();
 
 // Lista de orígenes permitidos
 $allowed_origins = [
-    'https://vinyl-labs.vercel.app',
+    'https://tienda-vinilo-daw.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173',
     'http://127.0.0.1:5500',
@@ -18,7 +18,7 @@ if (in_array($origin, $allowed_origins)) {
     header('Access-Control-Allow-Origin: ' . $origin);
 } else {
     // Si no hay origen o no está permitido, usar el principal
-    header('Access-Control-Allow-Origin: https://vinyl-labs.vercel.app');
+    header('Access-Control-Allow-Origin: https://tienda-vinilo-daw.vercel.app');
 }
 
 header('Access-Control-Allow-Credentials: true');
