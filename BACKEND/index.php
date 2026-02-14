@@ -82,7 +82,7 @@ session_start();
     <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4">
       <div class="d-flex align-items-center">
         <!-- ✅ CORREGIDO: Ruta a FRONTEND -->
-        <img src="../FRONTEND/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="header-logo me-2" style="height: 50px;">
+        <img src="<img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="header-logo me-2" style="height: 50px;">
         <h1 class="header-title mb-0">Vinyl Lab</h1>
       </div>
 
@@ -106,7 +106,7 @@ session_start();
   <div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="menuLateral">
     <div class="offcanvas-header flex-column align-items-start w-100">
       <div class="logo-container">
-        <img src="../FRONTEND/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="sidebar-logo">
+        <img src="<img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="sidebar-logo">
       </div>
     </div>
     <div class="offcanvas-body">
@@ -138,7 +138,7 @@ session_start();
 
       <div class="hero-left text-center text-lg-start position-relative">
         <div class="imagen position-relative d-inline-block mb-3">
-          <img src="../FRONTEND/imagenes/beatles1.jpg" alt="Vinilo destacado" class="imagen-principal">
+          <img src="<img src="https://tienda-vinilo-daw.vercel.app/imagenes/beatles1.jpg" alt="Vinilo destacado" class="imagen-principal">
           <button class="btn-play" id="playButton" aria-label="Reproducir">
             <i class="bi bi-play-fill"></i>
           </button>
@@ -165,9 +165,9 @@ session_start();
       <h2 class="mb-4">Explora nuestra colección</h2>
       <div class="carousel3d">
         <div class="carousel3d-content">
-          <div class="carousel3d-item"><img src="../FRONTEND/imagenes/beatles1.jpg" alt="Abbey Road"></div>
-          <div class="carousel3d-item"><img src="../FRONTEND/imagenes/pinkfloyd.png" alt="Pink Floyd"></div>
-          <div class="carousel3d-item"><img src="../FRONTEND/imagenes/queen.png" alt="Queen"></div>
+          <div class="carousel3d-item"><img src="https://tienda-vinilo-daw.vercel.app/imagenes/beatles1.jpg" alt="Abbey Road"></div>
+          <div class="carousel3d-item"><img src="https://tienda-vinilo-daw.vercel.app/imagenes/pinkfloyd.png" alt="Pink Floyd"></div>
+          <div class="carousel3d-item"><img src="https://tienda-vinilo-daw.vercel.app/imagenes/queen.png" alt="Queen"></div>
         </div>
       </div>
     </section>
@@ -191,7 +191,7 @@ session_start();
     <section class="info-tienda">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <img src="../FRONTEND/imagenes/vinylstore1.png" alt="Vinyl store" class="img-fluid rounded shadow">
+          <img src=<img src="https://tienda-vinilo-daw.vercel.app/imagenes/vinylstore1.png" alt="Vinyl store" class="img-fluid rounded shadow">
         </div>
         <div class="col-lg-6">
           <h2>Sobre Nuestra Tienda</h2>
@@ -210,7 +210,7 @@ session_start();
     <div class="container">
       <div class="row gy-4">
         <div class="col-md-3 text-center text-md-start">
-          <img src="../FRONTEND/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="footer-logo mb-2">
+          <img src=<img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="footer-logo mb-2">
           <p class="footer-text">El sonido del pasado, con la calidez del presente.</p>
         </div>
 

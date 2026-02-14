@@ -372,8 +372,10 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="card h-100 shadow-sm" style="background-color: rgba(255,255,255,0.9); border: none;">
             <?php if (!empty($row['imagen'])): ?>
-              <img src="<?= htmlspecialchars($row['imagen']) ?>" class="card-img-top"
+              <img src="ver_imagen.php?f=<?= urlencode(basename($row['imagen'])) ?>"
+                class="card-img-top"
                 alt="<?= htmlspecialchars($row['nombre']) ?>">
+
             <?php endif; ?>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title" style="font-family: 'Bebas Neue', sans-serif;">

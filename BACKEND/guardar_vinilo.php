@@ -98,7 +98,7 @@ if (!in_array($ext, $allowedExts)) {
 }
 
 // ✅ Crear directorio si no existe
-$uploadDir = __DIR__ . '/uploads/';
+$uploadDir = __DIR__ . '/../uploads/';
 if (!is_dir($uploadDir)) {
     if (!mkdir($uploadDir, 0755, true)) {
         die("<script>
@@ -111,7 +111,7 @@ if (!is_dir($uploadDir)) {
 // ✅ Generar nombre seguro
 $safeName = uniqid('vinilo_', true) . '.' . $ext;
 $destination = $uploadDir . $safeName;
-$rutaDB = 'Backend/uploads/' . $safeName;
+$rutaDB = 'uploads/' . $safeName;
 
 // ✅ Mover archivo
 if (!move_uploaded_file($archivo['tmp_name'], $destination)) {
