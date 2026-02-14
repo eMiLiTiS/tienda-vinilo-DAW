@@ -111,7 +111,7 @@ if (!is_dir($uploadDir)) {
 // ✅ Generar nombre seguro
 $safeName = uniqid('vinilo_', true) . '.' . $ext;
 $destination = $uploadDir . $safeName;
-$rutaDB = 'uploads/' . $safeName;
+$rutaDB = 'Backend/uploads/' . $safeName;
 
 // ✅ Mover archivo
 if (!move_uploaded_file($archivo['tmp_name'], $destination)) {
