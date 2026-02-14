@@ -21,9 +21,16 @@ $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 if (in_array($origin, $allowed_origins)) {
     header('Access-Control-Allow-Origin: ' . $origin);
     header('Vary: Origin');
+    header('Access-Control-Allow-Credentials: true');
 } else {
-    header('Access-Control-Allow-Origin: https://tienda-vinilo-daw.vercel.app');
+    if ($origin) {
+        http_response_code(403);
+        echo json_encode(['success' => false, 'message' => 'Origin no permitido']);
+        exit();
+    }
 }
+
+
 
 
 header('Access-Control-Allow-Credentials: true');
@@ -43,7 +50,7 @@ require_once __DIR__ . '/conexion.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener datos del POST
     $input = json_decode(file_get_contents('php://input'), true);
-    
+
     $usuario = isset($input['usuario']) ? trim($input['usuario']) : '';
     $contrasena = isset($input['contrasena']) ? trim($input['contrasena']) : '';
 
@@ -64,16 +71,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($resultado->num_rows === 1) {
             $row = $resultado->fetch_assoc();
-            
+
             // Verificar contraseña
             // Primero intentamos con password_verify (para contraseñas hasheadas)
             // Si falla, comparamos directamente (para contraseñas en texto plano)
             $password_valida = hash_equals($row['pass'], $contrasena);
-            
+
             if ($password_valida) {
+                $upd = $conn->prepare("UPDATE usuarios SET ultimo_acceso = NOW() WHERE id = ?");
+                $upd->bind_param("i", $row['id']);
+                $upd->execute();
+                $upd->close();
+
                 // Regenerar ID de sesión por seguridad
                 session_regenerate_id(true);
-                
+
                 // Guardar datos en la sesión
                 $_SESSION['usuario'] = $row['nombre'];
                 $_SESSION['usuario_id'] = $row['id'];
@@ -112,4 +124,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
-?>
