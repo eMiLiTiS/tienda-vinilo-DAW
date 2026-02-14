@@ -41,9 +41,13 @@ CREATE TABLE `usuarios` (
 -- ⚠️ Los hashes son placeholders - reemplázalos después de generarlos
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `pass`, `email`, `creado_en`) VALUES
-(1, 'iker', 'REEMPLAZAR_CON_HASH', 'iker@vinyllab.com', NOW()),
-(2, 'admin', 'REEMPLAZAR_CON_HASH', 'admin@vinyllab.com', NOW());
+TRUNCATE TABLE usuarios;
+
+INSERT INTO usuarios (id, nombre, pass, email, creado_en) VALUES
+(1, 'iker', '123', 'iker@vinyllab.com', NOW()),
+(2, 'admin', 'admin123', 'admin@vinyllab.com', NOW()),
+(3, 'emilio', 'emilio123', 'usuario1@vinyllab.com', NOW());
+
 
 -- --------------------------------------------------------
 
