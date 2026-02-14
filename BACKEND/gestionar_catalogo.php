@@ -43,7 +43,7 @@ if (getenv('RAILWAY_ENVIRONMENT')) {
     <div class="container d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <!-- ✅ CORREGIDO -->
-        <img src="../FRONTEND/imagenes/VinylLab.png" class="header-logo me-2">
+        <img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" class="header-logo me-2">
         <h1 class="header-title">Vinyl Lab</h1>
       </div>
 
@@ -67,7 +67,7 @@ if (getenv('RAILWAY_ENVIRONMENT')) {
   <div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="menuLateral">
     <div class="offcanvas-header">
       <!-- ✅ CORREGIDO -->
-      <img src="../FRONTEND/imagenes/VinylLab.png" class="sidebar-logo">
+      <img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" class="sidebar-logo">
     </div>
   </div>
 
