@@ -313,7 +313,7 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
   <header class="main-header">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
-        <img src="../FRONTEND/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="header-logo me-2">
+        <img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="header-logo me-2">
         <h1 class="header-title">Vinyl Lab</h1>
       </div>
 
@@ -337,7 +337,7 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
   <div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="menuLateral" aria-labelledby="tituloMenu">
     <div class="offcanvas-header flex-column align-items-start w-100">
       <div class="logo-container">
-        <img src="imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="sidebar-logo">
+        <img src="https://tienda-vinilo-daw.vercel.app/imagenes/VinylLab.png" alt="Logo Vinyl Lab" class="sidebar-logo">
       </div>
     </div>
     <div class="offcanvas-body">
