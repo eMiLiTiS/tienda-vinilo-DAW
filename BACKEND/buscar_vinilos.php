@@ -17,23 +17,36 @@ $stmt->bind_param("s", $like);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$imgFile = trim((string)($v['imagen'] ?? ''));
-$imgFile = basename($imgFile);
-
-if ($imgFile !== '') {
-  echo '<td>
-          <img src="ver_imagen.php?f=' . urlencode($imgFile) . '"
-               alt="Portada"
-               style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
-        </td>';
+if ($result->num_rows === 0) {
+  echo '<tr>
+          <td colspan="5" class="text-center text-muted py-4">
+            <i class="bi bi-search"></i><br>
+            No se encontraron vinilos
+          </td>
+        </tr>';
 } else {
-  echo '<td>
-          <div style="width:60px;height:60px;border-radius:8px;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;">
-            Sin imagen
-          </div>
-        </td>';
-}
 
+  while ($v = $result->fetch_assoc()) {
+
+    echo '<tr>';
+
+    // IMAGEN
+    $imgFile = trim((string)($v['imagen'] ?? ''));
+    $imgFile = basename($imgFile);
+
+    if ($imgFile !== '') {
+      echo '<td>
+              <img src="ver_imagen.php?f=' . urlencode($imgFile) . '"
+                   alt="Portada"
+                   style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
+            </td>';
+    } else {
+      echo '<td>
+              <div style="width:60px;height:60px;border-radius:8px;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;">
+                Sin imagen
+              </div>
+            </td>';
+    }
 
     // NOMBRE
     echo '<td style="font-weight:600;">' . htmlspecialchars($v['nombre']) . '</td>';
@@ -42,12 +55,13 @@ if ($imgFile !== '') {
     echo '<td>' . number_format((float)$v['precio'], 2, ',', '.') . ' €</td>';
 
     // VISIBLE
-    $badgeClass = $v['visible'] ? 'bg-success' : 'bg-secondary';
-    $badgeText  = $v['visible'] ? 'Visible' : 'Oculto';
+    $badgeClass = ((int)$v['visible'] === 1) ? 'bg-success' : 'bg-secondary';
+    $badgeText  = ((int)$v['visible'] === 1) ? 'Visible' : 'Oculto';
     echo '<td><span class="badge ' . $badgeClass . '">' . $badgeText . '</span></td>';
 
     // ACCIONES
-    $toggleText = $v['visible'] ? 'Ocultar' : 'Mostrar';
+    $toggleText = ((int)$v['visible'] === 1) ? 'Ocultar' : 'Mostrar';
+
     echo '<td class="d-flex gap-2 justify-content-center">
             <a href="toggle_vinilo.php?id=' . (int)$v['id'] . '"
                class="btn btn-sm"
