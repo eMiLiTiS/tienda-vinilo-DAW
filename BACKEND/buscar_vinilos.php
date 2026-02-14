@@ -17,23 +17,23 @@ $stmt->bind_param("s", $like);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows === 0) {
-  echo '<tr>
-          <td colspan="5" class="text-center text-muted py-4">
-            <i class="bi bi-search"></i><br>
-            No se encontraron vinilos
-          </td>
-        </tr>';
-} else {
-  while ($v = $result->fetch_assoc()) {
-    echo '<tr>';
+$imgFile = trim((string)($v['imagen'] ?? ''));
+$imgFile = basename($imgFile);
 
-    // IMAGEN (usando ver_imagen.php)
-    echo '<td>
-            <img src="ver_imagen.php?f=' . urlencode(basename($v['imagen'])) . '"
-                 alt="Portada"
-                 style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
-          </td>';
+if ($imgFile !== '') {
+  echo '<td>
+          <img src="ver_imagen.php?f=' . urlencode($imgFile) . '"
+               alt="Portada"
+               style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
+        </td>';
+} else {
+  echo '<td>
+          <div style="width:60px;height:60px;border-radius:8px;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;">
+            Sin imagen
+          </div>
+        </td>';
+}
+
 
     // NOMBRE
     echo '<td style="font-weight:600;">' . htmlspecialchars($v['nombre']) . '</td>';
