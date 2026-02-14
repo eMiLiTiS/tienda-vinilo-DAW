@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `login_vinyl`
 --
-USE `login_vinyl`;
+
 
 -- --------------------------------------------------------
 
