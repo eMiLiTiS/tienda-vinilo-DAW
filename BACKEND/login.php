@@ -10,7 +10,7 @@ session_start();
 
 // CORS headers
 $allowed_origins = [
-    'https://vinyl-labs.vercel.app',
+    'https://tienda-vinilo-daw.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173',
     'http://127.0.0.1:5500'
@@ -20,9 +20,11 @@ $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
 
 if (in_array($origin, $allowed_origins)) {
     header('Access-Control-Allow-Origin: ' . $origin);
+    header('Vary: Origin');
 } else {
-    header('Access-Control-Allow-Origin: https://vinyl-labs.vercel.app');
+    header('Access-Control-Allow-Origin: https://tienda-vinilo-daw.vercel.app');
 }
+
 
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
