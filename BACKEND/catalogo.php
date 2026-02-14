@@ -2,9 +2,9 @@
 session_start();
 // Usar conexión de Railway en producción, local en desarrollo
 if (getenv('RAILWAY_ENVIRONMENT')) {
-    require_once __DIR__ . '/conexion_railway.php';
+  require_once __DIR__ . '/conexion_railway.php';
 } else {
-    require_once __DIR__ . '/conexion.php';
+  require_once __DIR__ . '/conexion.php';
 }
 
 $vinilos = $conn->query("SELECT * FROM vinilos WHERE visible = 1 ORDER BY id DESC");
@@ -375,11 +375,13 @@ $resena_ok = isset($_GET['resena']) && $_GET['resena'] === 'ok';
               </h5>
               <p class="card-text mb-3"><?= number_format($row['precio'], 2, ',', '.') ?> €</p>
               <div class="mt-auto">
-                <a href="../FRONTEND/formulario.html?vinilo_id=<?= (int)$row['id'] ?>&vinilo_nombre=<?= urlencode($row['nombre']) ?>"
+                <a
+                  href="https://tienda-vinilo-daw.vercel.app/formulario.html?vinilo_id=<?= (int)$row['id'] ?>&vinilo_nombre=<?= urlencode($row['nombre']) ?>"
                   class="btn btn-resena w-100">
                   <i class="bi bi-star me-1"></i> Dejar reseña
                 </a>
               </div>
+
             </div>
           </div>
         </div>
