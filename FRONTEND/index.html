@@ -99,19 +99,15 @@
       <!-- Botones de usuario -->
       <div class="d-flex align-items-center gap-2">
         <!-- Botón Gestionar catálogo (solo con sesión) -->
-        <a href="https://tienda-vinilo-daw-production.up.railway.app/gestionar_catalogo.php" 
-           class="btn-login-custom sesion-required" 
-           id="btnGestionarHeader">Gestionar catálogo</a>
-        
+        <a href="https://tienda-vinilo-daw-production.up.railway.app/gestionar_catalogo.php"
+          class="btn-login-custom sesion-required" id="btnGestionarHeader">Gestionar catálogo</a>
+
         <!-- Botón Cerrar sesión (solo con sesión) -->
-        <a href="https://tienda-vinilo-daw-production.up.railway.app/logout.php" 
-           class="btn-login-custom sesion-required" 
-           id="btnCerrarSesion">Cerrar sesión</a>
-        
+        <a href="https://tienda-vinilo-daw-production.up.railway.app/logout.php"
+          class="btn-login-custom sesion-required" id="btnCerrarSesion">Cerrar sesión</a>
+
         <!-- Botón Iniciar sesión (solo sin sesión) -->
-        <a href="login.html" 
-           class="btn-login-custom" 
-           id="btnIniciarSesion">Iniciar sesión</a>
+        <a href="login.html" class="btn-login-custom" id="btnIniciarSesion">Iniciar sesión</a>
 
         <button class="btn btn-hamburguesa" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral"
           aria-controls="menuLateral" aria-label="Abrir menú" id="btnHamburguesa">
@@ -135,21 +131,18 @@
         <a class="nav-link" href="https://tienda-vinilo-daw-production.up.railway.app/catalogo.php">Catálogo</a>
         <a class="nav-link" href="#">Ofertas</a>
         <a class="nav-link" href="#">Contacto</a>
-        
+
         <!-- Botón Gestionar catálogo en menú (solo con sesión) -->
-        <a class="nav-link sesion-required" 
-           href="https://tienda-vinilo-daw-production.up.railway.app/gestionar_catalogo.php" 
-           id="btnGestionarMenu">Gestionar catálogo</a>
-        
+        <a class="nav-link sesion-required"
+          href="https://tienda-vinilo-daw-production.up.railway.app/gestionar_catalogo.php"
+          id="btnGestionarMenu">Gestionar catálogo</a>
+
         <!-- Botón Cerrar sesión en menú (solo con sesión) -->
-        <a class="nav-link sesion-required" 
-           href="https://tienda-vinilo-daw-production.up.railway.app/logout.php" 
-           id="btnCerrarSesionMenu">Cerrar sesión</a>
-        
+        <a class="nav-link sesion-required" href="https://tienda-vinilo-daw-production.up.railway.app/logout.php"
+          id="btnCerrarSesionMenu">Cerrar sesión</a>
+
         <!-- Botón Iniciar sesión en menú (solo sin sesión) -->
-        <a class="nav-link" 
-           href="login.html" 
-           id="btnIniciarSesionMenu">Iniciar sesión</a>
+        <a class="nav-link" href="login.html" id="btnIniciarSesionMenu">Iniciar sesión</a>
       </nav>
     </div>
   </div>
@@ -330,17 +323,17 @@
           method: 'GET',
           credentials: 'include' // Importante para enviar cookies de sesión
         });
-        
+
         const data = await response.json();
-        
+
         console.log('Respuesta de sesión:', data); // Para debugging
-        
+
         if (data.sesion_activa) {
           // Hay sesión activa - mostrar botones de gestión y cerrar sesión
           document.querySelectorAll('.sesion-required').forEach(el => {
             el.style.display = 'inline-block';
           });
-          
+
           // Ocultar botones de iniciar sesión
           document.getElementById('btnIniciarSesion').style.display = 'none';
           document.getElementById('btnIniciarSesionMenu').style.display = 'none';
@@ -348,7 +341,7 @@
           // No hay sesión - mostrar botón de iniciar sesión
           document.getElementById('btnIniciarSesion').style.display = 'inline-block';
           document.getElementById('btnIniciarSesionMenu').style.display = 'block';
-          
+
           // Ocultar botones que requieren sesión
           document.querySelectorAll('.sesion-required').forEach(el => {
             el.style.display = 'none';
